@@ -2,14 +2,14 @@
 
 Hey everyone 👋
 
-This Template will automate the deployment of an IaaS Azure VM with Hyper-V Role enabled. By this, you will be able to experiment freely using Hyper-V Server, learn,  build Proof-Of-Concept environments or even use it as staging environment for creating shipping Custom Images to Azure.
+This Template will automate the deployment of an IaaS Azure VM running Windows Server 2022, having Hyper-V Role enabled. By this, you will be able to experiment freely using Hyper-V Server, learn, build Proof-Of-Concept environments or even use it as staging environment for creating shipping Custom Images to Azure.
 
 The Template consists of the following resources:
 
 + A Virtual Network(VNet) with 1 Subnet
 + A Standard SKU Static Public IP
 + A Network Security Group (NSG)
-+ A Virtual Machine that is capable of Nested Virtualization
++ A Virtual Machine that is capable of Nested Virtualization - <a href="https://www.markou.me/2020/05/which-azure-vm-sizes-support-nested-virtualization/" target="_blank">Markou.me</a>
 + Two Premium SSD Disks - One for Operating System(128GB) and One for Storing Virtual Machines(512GB)
 
 Server Roles:
@@ -18,7 +18,7 @@ Server Roles:
 + DHCP Server
 + RSAT Tools
 
-Additional Software Included within the VM:
+Additional Software Included with the VM:
 
 + Azure PowerShell (Az)
 + Azure Cli
