@@ -14,7 +14,7 @@ Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ServerManager\Roles\12 -Name Con
 Restart-Service -Name DHCPServer -Force
 
 Get-Disk | Where-Object -Property PartitionStyle -EQ "RAW" | Initialize-Disk -PartitionStyle GPT -PassThru | New-Volume -FileSystem REFS -AllocationUnitSize 65536 -DriveLetter F -FriendlyName "VMS"
-New-Item -Path "F:\VMS" -ItemType Directory;New-Item -Path "F:\VMS\Disks" -ItemType Directory
+New-Item -Path "F:\VMS" -ItemType Directory;New-Item -Path "F:\VMS\Disks" -ItemType Directory;New-Item -Path "F:\VMS\Templates" -ItemType Directory 
 Set-VMHost -VirtualMachinePath "F:\VMS" -VirtualHardDiskPath "F:\VMS\Disks" -EnableEnhancedSessionMode $true
 
 
