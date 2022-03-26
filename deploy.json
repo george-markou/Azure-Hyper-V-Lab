@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.1124.51302",
-      "templateHash": "8979481347801770982"
+      "templateHash": "3475750510104190840"
     }
   },
   "parameters": {
@@ -260,7 +260,7 @@
         "settings": {
           "wmfVersion": "latest",
           "configuration": {
-            "url": "https://georgemarkou01.blob.core.windows.net/dsc/DSCInstallWindowsFeatures.zip",
+            "url": "https://github.com/george-markou/Azure-Hyper-V-Lab/blob/main/dsc/DSCInstallWindowsFeatures.ps1",
             "script": "DSCInstallWindowsFeatures.ps1",
             "function": "InstallWindowsFeatures"
           }
@@ -282,9 +282,9 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://georgemarkou01.blob.core.windows.net/dsc/HostConfigChocolatey.ps1"
+            "https://github.com/george-markou/Azure-Hyper-V-Lab/blob/main/HostConfig.ps1"
           ],
-          "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File HostConfigChocolatey.ps1"
+          "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File HostConfig.ps1"
         }
       },
       "dependsOn": [

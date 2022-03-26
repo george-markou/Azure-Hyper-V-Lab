@@ -210,7 +210,7 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' =
     settings: {
       wmfVersion: 'latest'
       configuration: {
-        url: 'https://georgemarkou01.blob.core.windows.net/dsc/DSCInstallWindowsFeatures.zip'
+        url: 'https://github.com/george-markou/Azure-Hyper-V-Lab/blob/main/dsc/DSCInstallWindowsFeatures.ps1'
         script: 'DSCInstallWindowsFeatures.ps1'
         function: 'InstallWindowsFeatures'
       }
@@ -229,9 +229,9 @@ resource hostVmSetupExtension 'Microsoft.Compute/virtualMachines/extensions@2021
     autoUpgradeMinorVersion: true
     settings: {
       fileUris: [
-        'https://georgemarkou01.blob.core.windows.net/dsc/HostConfigChocolatey.ps1'
+        'https://github.com/george-markou/Azure-Hyper-V-Lab/blob/main/HostConfig.ps1'
       ]
-      commandToExecute: 'powershell -ExecutionPolicy Unrestricted -File HostConfigChocolatey.ps1'
+      commandToExecute: 'powershell -ExecutionPolicy Unrestricted -File HostConfig.ps1'
     }
   }
   dependsOn: [
