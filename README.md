@@ -2,7 +2,7 @@
 
 Hey everyone 👋
 
-This Template will automate the deployment of an IaaS Azure VM running Windows Server 2022, having Hyper-V Role enabled. By this, you will be able to experiment freely using Hyper-V Server, learn, build Proof-Of-Concept environments or even use it as staging environment for creating shipping Custom Images to Azure.
+This Template will automate the deployment of an Azure IaaS VM running Windows Server 2022 OS, having Hyper-V Role enabled. By this, you will be able to experiment freely using Hyper-V Server, learn, build Proof-Of-Concept or non-production environments or even use it as staging environment for creating shipping Custom Images to Azure.
 
 The Template consists of the following resources:
 
