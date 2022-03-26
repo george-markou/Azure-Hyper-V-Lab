@@ -25,7 +25,7 @@ choco install azcopy10 -y
 choco install windows-admin-center -y
 choco install azure-cli -y
 choco install powershell-core -y
-choco install 7zip
+choco install 7zip -y
 
 ### Create Desktop Shortcuts for Windows Admin Center, Microsoft Evaluation Center and Hyper-V Manager ###
 $Shell = New-Object -ComObject ("WScript.Shell")
@@ -38,7 +38,6 @@ $Shortcut2 = $Shell.CreateShortcut("C:\Users\Public\Desktop\Microsoft Evaluation
 $Shortcut2.TargetPath = "https://www.microsoft.com/en-us/evalcenter/";
 $Shortcut2.Save()
 
-Start-Sleep 10
 Copy-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Hyper-V Manager.lnk" -Destination "C:\Users\Public\Desktop\Hyper-V Manager.lnk"
 
 
