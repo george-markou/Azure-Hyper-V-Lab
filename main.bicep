@@ -210,7 +210,7 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' =
     settings: {
       wmfVersion: 'latest'
       configuration: {
-        url: 'https://github.com/george-markou/Azure-Hyper-V-Lab/blob/main/dsc/DSCInstallWindowsFeatures.ps1'
+        url: 'https://github.com/george-markou/Azure-Hyper-V-Lab/blob/main/dsc/DSCInstallWindowsFeatures.zip'
         script: 'DSCInstallWindowsFeatures.ps1'
         function: 'InstallWindowsFeatures'
       }
