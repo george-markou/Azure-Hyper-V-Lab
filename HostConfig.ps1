@@ -38,6 +38,10 @@ $Shortcut2 = $Shell.CreateShortcut("C:\Users\Public\Desktop\Microsoft Evaluation
 $Shortcut2.TargetPath = "https://www.microsoft.com/en-us/evalcenter/";
 $Shortcut2.Save()
 
+$Shortcut3 = $Shell.CreateShortcut("C:\Users\Public\Desktop\MSLAB GitHub Repository.url")
+$Shortcut3.TargetPath = "https://github.com/microsoft/MSLab";
+$Shortcut3.Save()
+
 Copy-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Hyper-V Manager.lnk" -Destination "C:\Users\Public\Desktop\Hyper-V Manager.lnk"
 
 
