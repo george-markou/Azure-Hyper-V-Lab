@@ -38,7 +38,7 @@ Press the button below to deploy the Template using the Azure Portal:
 
 1. Press Deploy to Azure Button to initiate the deployment.
 
-2. Fill in the required information. The resultant
+2. Fill in the required information.
 
 ![](./images/template.png)
 
