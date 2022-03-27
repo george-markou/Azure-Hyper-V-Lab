@@ -34,7 +34,7 @@ Press the button below to deploy the Template using the Azure Portal:
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fgeorge-markou%2FAzure-Hyper-V-Lab%2Fmain%2Fmain.json)
 [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorge-markou%2FAzure-Hyper-V-Lab%2Fmain%2Fmain.json)
 
-# Get Started
+## Get Started
 
 1. Press Deploy to Azure Button to initiate the deployment.
 
@@ -54,7 +54,7 @@ Press the button below to deploy the Template using the Azure Portal:
 
 ![](./images/shortcuts.png)
 
-# General Notes
+## General Notes
 
 + There is a large list of VM sizes specified as allowed values within the Template. Just to make your life easier and avoid deployment errors :superhero:.
 + To evaluate Microsoft Software and Operating Systems, use the Desktop Shortcut of the Microsoft Evaluation Center.
