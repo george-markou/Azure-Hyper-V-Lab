@@ -8,7 +8,7 @@ The Template consists of the following resources:
 
 + A Virtual Network(VNet) with 1 Subnet
 + A Standard SKU Static Public IP
-+ A Network Security Group (NSG)
++ A Network Security Group (NSG) configured to allow Remote Desktop Connections
 + A Virtual Machine that is capable of Nested Virtualization - <a href="https://www.markou.me/2020/05/which-azure-vm-sizes-support-nested-virtualization/" target="_blank">Markou.me</a>
 + Two Premium SSD Disks - One for Operating System(127GB) and One for Storing Virtual Machines(512GB)
 
