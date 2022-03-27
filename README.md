@@ -53,3 +53,14 @@ Press the button below to deploy the Template using the Azure Portal:
 5. Start Managing Hyper-V either using Hyper-V Manager or Windows Admin Center.
 
 ![](./images/shortcuts.png)
+
+# General Notes
+
++ There is a large list of VM sizes specified as allowed values within the Template. Just to make your life easier and avoid deployment errors :superhero:.
++ To evaluate Microsoft Software and Operating Systems, use the Desktop Shortcut of the Microsoft Evaluation Center.
++ The default path for storing Virtual Machine configuration files is "F:\VMS" and for disks is "F:\VMS\Disks".
++ Enhanced Session Mode is set to Enabled.
++ The Data Disk (Volume F) is formatted with ReFS and unit size 64KB.
++ You will find both JSON and Bicep Templates within this repo.
++ The DSC Configuration File is listed here [here](dsc/DSCInstallWindowsFeatures.ps1).
++ The Host Configuration File is listed here [here](/HostConfig.ps1).
