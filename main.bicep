@@ -6,14 +6,28 @@ param location string = resourceGroup().location
 param computerName string
 
 @description('Admin Username for the Host Virtual Machine')
-param HostAdminUsername string
+param AdminUsername string
 
 @description('Admin User Password for the Host Virtual Machine')
 @secure()
-param HostAdminPassword string
+param AdminPassword string
 
 @description('Size of the Host Virtual Machine')
 @allowed([
+  'Standard_D2_v4'
+  'Standard_D4_v4'
+  'Standard_D8_v4'
+  'Standard_D16_v4'
+  'Standard_D32_v4'
+  'Standard_D48_v4'
+  'Standard_D64_v4'
+  'Standard_D2s_v4'
+  'Standard_D4s_v4'
+  'Standard_D8s_v4'
+  'Standard_D16s_v4'
+  'Standard_D32s_v4'
+  'Standard_D48s_v4'
+  'Standard_D64s_v4'
   'Standard_D2_v3'
   'Standard_D4_v3'
   'Standard_D8_v3'
@@ -38,17 +52,57 @@ param HostAdminPassword string
   'Standard_E16s_v3'
   'Standard_E32s_v3'
   'Standard_E64s_v3'
+  'Standard_E2_v4'
+  'Standard_E4_v4'
+  'Standard_E8_v4'
+  'Standard_E16_v4'
+  'Standard_E20_v4'
+  'Standard_E32_v4'
+  'Standard_E48_v4'
+  'Standard_E64_v4'
+  'Standard_E2s_v4'
+  'Standard_E4s_v4'
+  'Standard_E8s_v4'
+  'Standard_E16s_v4'
+  'Standard_E20s_v4'
+  'Standard_E32s_v4'
+  'Standard_E48s_v4'
+  'Standard_E64s_v4'
+  'Standard_E80s_v4'
+  'Standard_F2s_v2'
+  'Standard_F4s_v2'
+  'Standard_F8s_v2'
+  'Standard_F16s_v2'
+  'Standard_F32s_v2'
+  'Standard_F48s_v2'
+  'Standard_F64s_v2'
+  'Standard_F72s_v2'
+  'Standard_M8ms'
+  'Standard_M16ms'
+  'Standard_M32ts'
+  'Standard_M32ls'
+  'Standard_M32ms'
+  'Standard_M64s'
+  'Standard_M64ls'
+  'Standard_M64ms'
+  'Standard_M128s'
+  'Standard_M128ms'
+  'Standard_M64'
+  'Standard_M64m'
+  'Standard_M128'
+  'Standard_M128m'
 ])
-param HostVirtualMachineSize string = 'Standard_D4s_v3'
+param VirtualMachineSize string = 'Standard_F8s_v2'
 
+@description('Virtual Network(VNet) Configuration')
 param vnetName string
 param vnetaddressPrefix string = '192.168.0.0/24'
 param subnetName1 string = 'HyperVLab-snet'
 param subnetPrefix1 string = '192.168.0.0/28'
 
-
-resource HyperVNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = {
-  name: 'nsg-${computerName}'
+@description('Deployment of Network Security Group(NSG)')
+resource nsg 'Microsoft.Network/networkSecurityGroups@2021-05-01' = {
+  name: '${computerName}-nsg'
   location: resourceGroup().location
   properties: {
     securityRules: [
@@ -73,8 +127,9 @@ resource HyperVNSG 'Microsoft.Network/networkSecurityGroups@2021-05-01' = {
   }
 }
 
+@description('Deployment of Virtual Network(VNet)')
 resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
-  name: vnetName
+  name: '${vnetName}-vnet'
   location: resourceGroup().location
    properties: {
     addressSpace: {
@@ -93,8 +148,9 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
   }
 }
 
-resource HyperVpip 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
-  name: 'pip-${computerName}-01'
+@description('Deployment of Public IP Address(PIP)')
+resource vmPip 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
+  name: '${computerName}-pip'
   location: resourceGroup().location
   sku: {
     name: 'Standard'
@@ -106,8 +162,9 @@ resource HyperVpip 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
   }
 }
 
-resource HyperVNic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
-  name: 'nic-${computerName}-01'
+@description('Deployment of Network Interface Card(NIC)')
+resource vmNic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
+  name: '${computerName}-nic'
   location: resourceGroup().location
   properties: {
   ipConfigurations: [
@@ -119,7 +176,7 @@ resource HyperVNic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
         id: '${vnet.id}/subnets/${subnetName1}'
       }
       publicIPAddress: {
-      id: resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', HyperVpip.name)
+      id: resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', vmPip.name)
     }
     }
   }
@@ -131,18 +188,19 @@ resource HyperVNic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
   }
   enableIPForwarding: true
   networkSecurityGroup: {
-    id: HyperVNSG.id
+    id: nsg.id
     location: resourceGroup().location
   }
   }
 }
 
-resource hostVm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
+@description('Deployment of Virtual Machine with Nested Virtualization')
+resource vm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
   name: computerName
   location: location
   properties: {
     hardwareProfile: {
-      vmSize: HostVirtualMachineSize
+      vmSize: VirtualMachineSize
     }
     diagnosticsProfile: {
       bootDiagnostics: {
@@ -181,13 +239,13 @@ resource hostVm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
     }
     osProfile: {
       computerName: computerName
-      adminUsername: HostAdminUsername
-      adminPassword: HostAdminPassword
+      adminUsername: AdminUsername
+      adminPassword: AdminPassword
     }
     networkProfile: {
       networkInterfaces: [
         {
-          id: HyperVNic.id
+          id: vmNic.id
           properties: {
             primary: true
             deleteOption: 'Delete'
@@ -198,8 +256,9 @@ resource hostVm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
   }
 }
 
+@description('Deployment of DSC Configuration. Enablement of Hyper-V and DHCP Roles along with RSAT Tools.')
 resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = {
-  parent: hostVm
+  parent: vm
   name: 'InstallWindowsFeatures'
   location: location
   properties: {
@@ -218,9 +277,10 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' =
   }
 }
 
+@description('Custom Script Execution. Configuration of Server Roles, installation of Chocolatey and deployment of software.')
 resource hostVmSetupExtension 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = {
-  parent: hostVm
-  name: 'HostConfig'
+  parent: vm
+  name: 'HostConfiguration'
   location: location
   properties: {
     publisher: 'Microsoft.Compute'

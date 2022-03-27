@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.1124.51302",
-      "templateHash": "14414545591894506270"
+      "templateHash": "5717059340175509263"
     }
   },
   "parameters": {
@@ -23,22 +23,36 @@
         "description": "Name of Hyper-V Host Virtual Machine, Maximum of 15 characters, use letters and numbers only."
       }
     },
-    "HostAdminUsername": {
+    "AdminUsername": {
       "type": "string",
       "metadata": {
         "description": "Admin Username for the Host Virtual Machine"
       }
     },
-    "HostAdminPassword": {
+    "AdminPassword": {
       "type": "secureString",
       "metadata": {
         "description": "Admin User Password for the Host Virtual Machine"
       }
     },
-    "HostVirtualMachineSize": {
+    "VirtualMachineSize": {
       "type": "string",
-      "defaultValue": "Standard_D4s_v3",
+      "defaultValue": "Standard_F8s_v2",
       "allowedValues": [
+        "Standard_D2_v4",
+        "Standard_D4_v4",
+        "Standard_D8_v4",
+        "Standard_D16_v4",
+        "Standard_D32_v4",
+        "Standard_D48_v4",
+        "Standard_D64_v4",
+        "Standard_D2s_v4",
+        "Standard_D4s_v4",
+        "Standard_D8s_v4",
+        "Standard_D16s_v4",
+        "Standard_D32s_v4",
+        "Standard_D48s_v4",
+        "Standard_D64s_v4",
         "Standard_D2_v3",
         "Standard_D4_v3",
         "Standard_D8_v3",
@@ -62,14 +76,56 @@
         "Standard_E8s_v3",
         "Standard_E16s_v3",
         "Standard_E32s_v3",
-        "Standard_E64s_v3"
+        "Standard_E64s_v3",
+        "Standard_E2_v4",
+        "Standard_E4_v4",
+        "Standard_E8_v4",
+        "Standard_E16_v4",
+        "Standard_E20_v4",
+        "Standard_E32_v4",
+        "Standard_E48_v4",
+        "Standard_E64_v4",
+        "Standard_E2s_v4",
+        "Standard_E4s_v4",
+        "Standard_E8s_v4",
+        "Standard_E16s_v4",
+        "Standard_E20s_v4",
+        "Standard_E32s_v4",
+        "Standard_E48s_v4",
+        "Standard_E64s_v4",
+        "Standard_E80s_v4",
+        "Standard_F2s_v2",
+        "Standard_F4s_v2",
+        "Standard_F8s_v2",
+        "Standard_F16s_v2",
+        "Standard_F32s_v2",
+        "Standard_F48s_v2",
+        "Standard_F64s_v2",
+        "Standard_F72s_v2",
+        "Standard_M8ms",
+        "Standard_M16ms",
+        "Standard_M32ts",
+        "Standard_M32ls",
+        "Standard_M32ms",
+        "Standard_M64s",
+        "Standard_M64ls",
+        "Standard_M64ms",
+        "Standard_M128s",
+        "Standard_M128ms",
+        "Standard_M64",
+        "Standard_M64m",
+        "Standard_M128",
+        "Standard_M128m"
       ],
       "metadata": {
         "description": "Size of the Host Virtual Machine"
       }
     },
     "vnetName": {
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "Virtual Network(VNet) Configuration"
+      }
     },
     "vnetaddressPrefix": {
       "type": "string",
@@ -88,7 +144,7 @@
     {
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2021-05-01",
-      "name": "[format('nsg-{0}', parameters('computerName'))]",
+      "name": "[format('{0}-nsg', parameters('computerName'))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "securityRules": [
@@ -110,12 +166,15 @@
             }
           }
         ]
+      },
+      "metadata": {
+        "description": "Deployment of Network Security Group(NSG)"
       }
     },
     {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2021-05-01",
-      "name": "[parameters('vnetName')]",
+      "name": "[format('{0}-vnet', parameters('vnetName'))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
@@ -131,12 +190,15 @@
             }
           }
         ]
+      },
+      "metadata": {
+        "description": "Deployment of Virtual Network(VNet)"
       }
     },
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2021-02-01",
-      "name": "[format('pip-{0}-01', parameters('computerName'))]",
+      "name": "[format('{0}-pip', parameters('computerName'))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard",
@@ -145,12 +207,15 @@
       "properties": {
         "deleteOption": "Delete",
         "publicIPAllocationMethod": "Static"
+      },
+      "metadata": {
+        "description": "Deployment of Public IP Address(PIP)"
       }
     },
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2021-05-01",
-      "name": "[format('nic-{0}-01', parameters('computerName'))]",
+      "name": "[format('{0}-nic', parameters('computerName'))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "ipConfigurations": [
@@ -159,10 +224,10 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName')), parameters('subnetName1'))]"
+                "id": "[format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', format('{0}-vnet', parameters('vnetName'))), parameters('subnetName1'))]"
               },
               "publicIPAddress": {
-                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', format('pip-{0}-01', parameters('computerName')))]"
+                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', format('{0}-pip', parameters('computerName')))]"
               }
             }
           }
@@ -172,15 +237,18 @@
         },
         "enableIPForwarding": true,
         "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', format('nsg-{0}', parameters('computerName')))]",
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', format('{0}-nsg', parameters('computerName')))]",
           "location": "[resourceGroup().location]"
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', format('nsg-{0}', parameters('computerName')))]",
-        "[resourceId('Microsoft.Network/publicIPAddresses', format('pip-{0}-01', parameters('computerName')))]",
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
-      ]
+        "[resourceId('Microsoft.Network/networkSecurityGroups', format('{0}-nsg', parameters('computerName')))]",
+        "[resourceId('Microsoft.Network/publicIPAddresses', format('{0}-pip', parameters('computerName')))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', format('{0}-vnet', parameters('vnetName')))]"
+      ],
+      "metadata": {
+        "description": "Deployment of Network Interface Card(NIC)"
+      }
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
@@ -189,7 +257,7 @@
       "location": "[parameters('location')]",
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[parameters('HostVirtualMachineSize')]"
+          "vmSize": "[parameters('VirtualMachineSize')]"
         },
         "diagnosticsProfile": {
           "bootDiagnostics": {
@@ -228,13 +296,13 @@
         },
         "osProfile": {
           "computerName": "[parameters('computerName')]",
-          "adminUsername": "[parameters('HostAdminUsername')]",
-          "adminPassword": "[parameters('HostAdminPassword')]"
+          "adminUsername": "[parameters('AdminUsername')]",
+          "adminPassword": "[parameters('AdminPassword')]"
         },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', format('nic-{0}-01', parameters('computerName')))]",
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', format('{0}-nic', parameters('computerName')))]",
               "properties": {
                 "primary": true,
                 "deleteOption": "Delete"
@@ -244,8 +312,11 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', format('nic-{0}-01', parameters('computerName')))]"
-      ]
+        "[resourceId('Microsoft.Network/networkInterfaces', format('{0}-nic', parameters('computerName')))]"
+      ],
+      "metadata": {
+        "description": "Deployment of Virtual Machine with Nested Virtualization"
+      }
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -268,12 +339,15 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Compute/virtualMachines', parameters('computerName'))]"
-      ]
+      ],
+      "metadata": {
+        "description": "Deployment of DSC Configuration. Enablement of Hyper-V and DHCP Roles along with RSAT Tools."
+      }
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "apiVersion": "2021-03-01",
-      "name": "[format('{0}/{1}', parameters('computerName'), 'HostConfig')]",
+      "name": "[format('{0}/{1}', parameters('computerName'), 'HostConfiguration')]",
       "location": "[parameters('location')]",
       "properties": {
         "publisher": "Microsoft.Compute",
@@ -290,7 +364,10 @@
       "dependsOn": [
         "[resourceId('Microsoft.Compute/virtualMachines', parameters('computerName'))]",
         "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('computerName'), 'InstallWindowsFeatures')]"
-      ]
+      ],
+      "metadata": {
+        "description": "Custom Script Execution. Configuration of Server Roles, installation of Chocolatey and deployment of software."
+      }
     }
   ]
 }
