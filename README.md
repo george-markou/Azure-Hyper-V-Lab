@@ -17,6 +17,7 @@ Server Roles:
 + Hyper-V
 + DHCP Server
 + RSAT Tools
++ Containers
 
 Additional Software Included with the VM:
 
