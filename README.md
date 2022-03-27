@@ -58,6 +58,7 @@ Press the button below to deploy the Template using the Azure Portal:
 
 + There is a large list of VM sizes specified as allowed values within the Template. Just to make your life easier and avoid deployment errors :superhero:.
 + To evaluate Microsoft Software and Operating Systems, use the Desktop Shortcut of the Microsoft Evaluation Center.
++ In order to use Azure Marketplace Images to deploy Virtual Machines, visit my [blog](https://www.markou.me/2022/03/use-azure-marketplace-images-to-deploy-virtual-machines-on-azure-stack-hci/).
 + The default path for storing Virtual Machine configuration files is "F:\VMS" and for disks is "F:\VMS\Disks".
 + Enhanced Session Mode is set to Enabled.
 + A DHCP Scope is present, providing Network Addressing to Virtual Machines.
@@ -72,3 +73,4 @@ Press the button below to deploy the Template using the Azure Portal:
 + Windows Server Hyper-V and Virtualization Learning Path on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/windows-server-hyper-v-virtualization/)
 + Markou.me Hyper-V [Blog](https://www.markou.me/category/hyper-v/)
 + Virtualization [Blog](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization)
++ MSLab [GitHub Project](https://github.com/microsoft/MSLab)
