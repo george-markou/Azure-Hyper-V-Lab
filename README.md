@@ -10,7 +10,7 @@ The Template consists of the following resources:
 + A Standard SKU Static Public IP
 + A Network Security Group (NSG)
 + A Virtual Machine that is capable of Nested Virtualization - <a href="https://www.markou.me/2020/05/which-azure-vm-sizes-support-nested-virtualization/" target="_blank">Markou.me</a>
-+ Two Premium SSD Disks - One for Operating System(128GB) and One for Storing Virtual Machines(512GB)
++ Two Premium SSD Disks - One for Operating System(127GB) and One for Storing Virtual Machines(512GB)
 
 Server Roles:
 
