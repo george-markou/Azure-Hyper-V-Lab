@@ -64,3 +64,9 @@ Press the button below to deploy the Template using the Azure Portal:
 + You will find both JSON and Bicep Templates within this repo.
 + The DSC Configuration File is listed here [here](dsc/DSCInstallWindowsFeatures.ps1).
 + The Host Configuration File is listed here [here](/HostConfig.ps1).
+
+## Learn more about Hyper-V
+
++ Windows Server Hyper-V and Virtualization Learning Path on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/windows-server-hyper-v-virtualization/)
++ Markou.me Hyper-V [Blog](https://www.markou.me/category/hyper-v/)
++ Virtualization [Blog](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization)
