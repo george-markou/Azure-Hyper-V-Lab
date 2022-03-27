@@ -1,4 +1,4 @@
-# Azure-Hyper-V-Lab
+# Azure Hyper-V Lab
 
 Hey everyone 👋
 
