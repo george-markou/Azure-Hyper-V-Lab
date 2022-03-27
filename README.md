@@ -60,6 +60,8 @@ Press the button below to deploy the Template using the Azure Portal:
 + To evaluate Microsoft Software and Operating Systems, use the Desktop Shortcut of the Microsoft Evaluation Center.
 + The default path for storing Virtual Machine configuration files is "F:\VMS" and for disks is "F:\VMS\Disks".
 + Enhanced Session Mode is set to Enabled.
++ A DHCP Scope is present, providing Network Addressing to Virtual Machines.
++ An Internal Hyper-V Switch that is Nat enabled is present.
 + The Data Disk (Volume F) is formatted with ReFS and unit size 64KB.
 + You will find both JSON and Bicep Templates within this repo.
 + The DSC Configuration File is listed here [here](dsc/DSCInstallWindowsFeatures.ps1).
