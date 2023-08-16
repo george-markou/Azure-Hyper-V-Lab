@@ -211,7 +211,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
       imageReference: {
         publisher: 'MicrosoftWindowsServer'
         offer: 'WindowsServer'
-        sku: '2022-Datacenter'
+        sku: '2022-datacenter-azure-edition'
         version: 'latest'
       }
       osDisk: {
@@ -242,6 +242,18 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
       adminUsername: AdminUsername
       adminPassword: AdminPassword
     }
+  priority: 'Spot'
+  evictionPolicy: 'Deallocate'
+  billingProfile: {
+    maxPrice: -1
+  }
+  securityProfile: {
+    uefiSettings: {
+      secureBootEnabled: true
+      vTpmEnabled: true
+    }
+    securityType: 'TrustedLaunch'
+  }
     networkProfile: {
       networkInterfaces: [
         {
