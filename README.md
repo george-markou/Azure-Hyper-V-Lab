@@ -57,6 +57,7 @@ Additional Software Included with the VM:
 ## General Notes
 
 + There is a large list of VM sizes specified as allowed values within the Template. Just to make your life easier and avoid deployment errors :superhero:.
++ The virtual machine is utilizing Azure Spot Instances instead of regular instances, and an eviction policy has been set to 'deallocate'.
 + To evaluate Microsoft Software and Operating Systems, use the Desktop Shortcut of the Microsoft Evaluation Center.
 + In order to use Azure Marketplace Images to deploy Virtual Machines, visit my [blog](https://www.markou.me/2022/03/use-azure-marketplace-images-to-deploy-virtual-machines-on-azure-stack-hci/).
 + The default path for storing Virtual Machine configuration files is "F:\VMS" and for disks is "F:\VMS\Disks".
