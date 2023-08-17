@@ -247,13 +247,6 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
   billingProfile: {
     maxPrice: -1
   }
-  securityProfile: {
-    uefiSettings: {
-      secureBootEnabled: true
-      vTpmEnabled: true
-    }
-    securityType: 'TrustedLaunch'
-  }
     networkProfile: {
       networkInterfaces: [
         {
