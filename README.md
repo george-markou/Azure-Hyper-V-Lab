@@ -2,24 +2,24 @@
 
 Hey everyone 👋
 
-This Template will automate the deployment of an Azure IaaS VM running Windows Server 2022 OS, having Hyper-V Role enabled. By this, you will be able to experiment with Hyper-V, learn, build a proof of concept or non-production environments or even use it as staging environment for creating custom images that will be used on public Azure.
+Introducing an Azure IaaS VM Deployment Template for Windows Server 2022 with Hyper-V Role enabled. This template simplifies the process, allowing you to harness the power of Hyper-V for experimentation, learning, proof of concept development, non-production environments, or even as a staging environment for creating custom images destined for Azure's public cloud.
 
-The Template consists of the following resources:
+Here's what's included in the template:
 
-+ A Virtual Network(VNet) with 1 Subnet
-+ A Standard SKU Static Public IP
-+ A Network Security Group (NSG) configured to allow Remote Desktop Connections
-+ A Virtual Machine that is capable of Nested Virtualization - <a href="https://www.markou.me/2020/05/which-azure-vm-sizes-support-nested-virtualization/" target="_blank">Markou.me</a>
-+ Two Premium SSD Disks - One for Operating System(127GB) and One for Storing Virtual Machines(512GB)
++ A Virtual Network (VNet) with one Subnet
++ A Static Public IP with Standard SKU
++ A Network Security Group (NSG) configured to enable Remote Desktop Connections
++ A Virtual Machine with Nested Virtualization capabilities - visit Markou.me for more information
++ Two Premium SSD Disks: one for the Operating System (127GB) and one for Storing Virtual Machines (512GB)
 
-Server Roles:
+🌐 Server Roles:
 
 + Hyper-V
 + DHCP Server
 + RSAT Tools
 + Containers
 
-Additional Software Included with the VM:
+📦 Additional Software Pre-Installed:
 
 + Azure Az PowerShell module
 + Azure CLI
@@ -50,7 +50,7 @@ Additional Software Included with the VM:
 
 ![](./images/connection.png)
 
-5. Start Managing Hyper-V either using Hyper-V Manager or Windows Admin Center.
+5. Start managing Hyper-V using either Hyper-V Manager or Windows Admin Center.
 
 ![](./images/shortcuts.png)
 
