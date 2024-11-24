@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.4.1124.51302",
-      "templateHash": "5717059340175509263"
+      "version": "0.31.92.45157",
+      "templateHash": "2135997305994729398"
     }
   },
   "parameters": {
@@ -30,7 +30,7 @@
       }
     },
     "AdminPassword": {
-      "type": "secureString",
+      "type": "securestring",
       "metadata": {
         "description": "Admin User Password for the Host Virtual Machine"
       }
@@ -268,7 +268,7 @@
           "imageReference": {
             "publisher": "MicrosoftWindowsServer",
             "offer": "WindowsServer",
-            "sku": "2022-Datacenter",
+            "sku": "2025-datacenter-azure-edition",
             "version": "latest"
           },
           "osDisk": {
@@ -298,6 +298,11 @@
           "computerName": "[parameters('computerName')]",
           "adminUsername": "[parameters('AdminUsername')]",
           "adminPassword": "[parameters('AdminPassword')]"
+        },
+        "priority": "Spot",
+        "evictionPolicy": "Deallocate",
+        "billingProfile": {
+          "maxPrice": -1
         },
         "networkProfile": {
           "networkInterfaces": [
