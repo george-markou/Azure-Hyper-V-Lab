@@ -2,7 +2,7 @@
 
 Hey everyone 👋
 
-Introducing an Azure IaaS VM Deployment Template for Windows Server 2025 with Hyper-V Role enabled. This template simplifies the process, allowing you to harness the power of Hyper-V for experimentation, learning, proof of concept development, non-production environments, or even as a staging environment for creating custom images destined for Azure's public cloud.
+Introducing an Azure IaaS VM Deployment Template for Windows Server 2022 with Hyper-V Role enabled. This template simplifies the process, allowing you to harness the power of Hyper-V for experimentation, learning, proof of concept development, non-production environments, or even as a staging environment for creating custom images destined for Azure's public cloud.
 
 Here's what's included in the template:
 
