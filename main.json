@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.31.92.45157",
-      "templateHash": "17602386783351904815"
+      "templateHash": "1412752903554453222"
     }
   },
   "parameters": {
@@ -303,7 +303,8 @@
           "uefiSettings": {
             "secureBootEnabled": true,
             "vTpmEnabled": true
-          }
+          },
+          "securityType": "TrustedLaunch"
         },
         "priority": "Spot",
         "evictionPolicy": "Deallocate",
