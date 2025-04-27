@@ -120,7 +120,7 @@ param AdminPassword string
   'Standard_M128'
   'Standard_M128m'
 ])
-param VirtualMachineSize string = 'Standard_F8s_v2'
+param VirtualMachineSize string = 'Standard_D8s_v5'
 
 @description('Virtual Network(VNet) Configuration')
 param vnetName string
