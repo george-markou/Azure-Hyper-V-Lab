@@ -64,7 +64,7 @@ Start managing Hyper-V using **Hyper-V Manager** or **Windows Admin Center**.
 
 ## 📝 General Notes
 
-- A wide range of VM sizes is pre-configured in the template to avoid deployment errors. 💪
+- A wide range of VM sizes is pre-configured in the template to avoid deployment errors.
 - The VM uses **Azure Spot Instances** with an eviction policy set to `deallocate`.
 - Use the **Microsoft Evaluation Center** desktop shortcut to evaluate Microsoft software and operating systems.
 - Learn how to deploy VMs using Azure Marketplace Images on my [blog](https://www.markou.me/2022/03/use-azure-marketplace-images-to-deploy-virtual-machines-on-azure-stack-hci/).
