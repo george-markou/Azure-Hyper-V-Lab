@@ -30,6 +30,7 @@ Welcome to the **Azure Hyper-V Lab**! This project provides an Azure IaaS VM Dep
 - **Windows Admin Center**
 - **7-Zip**
 - **Chocolatey Package Manager**
+- **Evaluation copy of Windows Server 2025**
 
 ---
 
@@ -50,15 +51,20 @@ The deployment takes approximately 15 minutes.
 
 ![Deployment Progress](./images/deployment.png)
 
-### 4. Connect to Your VM
+### 4. Connect to Your Hyper-V VM
 Use **Remote Desktop** to connect to the newly deployed VM.
 
 ![Remote Desktop Connection](./images/connection.png)
 
-### 5. Manage Hyper-V
+### 5. Manage Hyper-V Server
 Start managing Hyper-V using **Hyper-V Manager** or **Windows Admin Center**.
 
 ![Hyper-V Shortcuts](./images/shortcuts.png)
+
+---
+
+### 6. Spin up Guest OS
+Start creating Windows Server 2025 Guest OSes using the ISO file stored under `F:\VMS\ISO`.
 
 ---
 
@@ -68,7 +74,7 @@ Start managing Hyper-V using **Hyper-V Manager** or **Windows Admin Center**.
 - The VM uses **Azure Spot Instances** with an eviction policy set to `deallocate`.
 - Use the **Microsoft Evaluation Center** desktop shortcut to evaluate Microsoft software and operating systems.
 - Learn how to deploy VMs using Azure Marketplace Images on my [blog](https://www.markou.me/2022/03/use-azure-marketplace-images-to-deploy-virtual-machines-on-azure-stack-hci/).
-- Default paths:
+- **Default Paths**:
   - VM configuration files: `F:\VMS`
   - VM disks: `F:\VMS\Disks`
 - **Enhanced Session Mode** is enabled.
@@ -76,7 +82,7 @@ Start managing Hyper-V using **Hyper-V Manager** or **Windows Admin Center**.
 - An **Internal Hyper-V Switch** with NAT enabled is included.
 - The data disk (`Volume F`) is formatted with **ReFS** and a unit size of 64KB.
 - Both **JSON** and **Bicep Templates** are available in this repository.
-- Configuration files:
+- **Configuration Files**:
   - [DSC Configuration File](dsc/DSCInstallWindowsFeatures.ps1)
   - [Host Configuration File](/HostConfig.ps1)
 
