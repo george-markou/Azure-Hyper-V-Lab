@@ -47,7 +47,7 @@ Provide the necessary details in the Azure Portal.
 ![Template Configuration](./images/template.png)
 
 ### 3. Sit Back and Relax ☕
-The deployment takes approximately 15 minutes.
+The deployment takes approximately 30 minutes.
 
 ![Deployment Progress](./images/deployment.png)
 
