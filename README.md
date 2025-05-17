@@ -61,11 +61,10 @@ Start managing Hyper-V using **Hyper-V Manager** or **Windows Admin Center**.
 
 ![Hyper-V Shortcuts](./images/shortcuts.png)
 
----
-
 ### 6. Spin up Guest OS
 Start creating Windows Server 2025 Guest OSes using the ISO file stored under `F:\VMS\ISO`.
 
+![Windows Server 2025 Evaluation ISO](./images/iso.png)
 ---
 
 ## 📝 General Notes
