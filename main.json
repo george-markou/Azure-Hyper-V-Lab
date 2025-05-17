@@ -151,8 +151,9 @@
     },
     "vnetName": {
       "type": "string",
+      "defaultValue": "vnet-hypervlab-01",
       "metadata": {
-        "description": "Virtual Network(VNet) Configuration"
+        "description": "Name of the Virtual Network"
       }
     },
     "vnetaddressPrefix": {
@@ -161,7 +162,7 @@
     },
     "subnetName": {
       "type": "string",
-      "defaultValue": "HyperVLab-snet"
+      "defaultValue": "snet-hypervlab-01"
     },
     "subnetPrefix": {
       "type": "string",
