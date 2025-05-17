@@ -159,11 +159,11 @@
       "type": "string",
       "defaultValue": "192.168.0.0/24"
     },
-    "subnetName1": {
+    "subnetName": {
       "type": "string",
       "defaultValue": "HyperVLab-snet"
     },
-    "subnetPrefix1": {
+    "subnetPrefix": {
       "type": "string",
       "defaultValue": "192.168.0.0/28"
     }
@@ -212,9 +212,9 @@
         },
         "subnets": [
           {
-            "name": "[parameters('subnetName1')]",
+            "name": "[parameters('subnetName')]",
             "properties": {
-              "addressPrefix": "[parameters('subnetPrefix1')]"
+              "addressPrefix": "[parameters('subnetPrefix')]"
             }
           }
         ]
@@ -252,7 +252,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', format('{0}-vnet', parameters('vnetName'))), parameters('subnetName1'))]"
+                "id": "[format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', format('{0}-vnet', parameters('vnetName'))), parameters('subnetName'))]"
               },
               "publicIPAddress": {
                 "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', format('{0}-pip', parameters('computerName')))]"
