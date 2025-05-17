@@ -123,10 +123,10 @@ param AdminPassword string
 param VirtualMachineSize string = 'Standard_D8s_v5'
 
 @description('Virtual Network(VNet) Configuration')
-param vnetName string
+param vnetName string = 'vnet-hypervlab-01'
 param vnetaddressPrefix string = '192.168.0.0/24'
-param subnetName1 string = 'HyperVLab-snet'
-param subnetPrefix1 string = '192.168.0.0/28'
+param subnetName string = 'snet-hypervlab-01'
+param subnetPrefix string = '192.168.0.0/28'
 
 @description('Deployment of Network Security Group(NSG)')
 resource nsg 'Microsoft.Network/networkSecurityGroups@2021-05-01' = {
@@ -167,9 +167,9 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
     }
     subnets: [
       {
-        name: subnetName1
+        name: subnetName
         properties: {
-          addressPrefix: subnetPrefix1
+          addressPrefix: subnetPrefix
         }
       }
     ]
@@ -201,7 +201,7 @@ resource vmNic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
     properties: {
       privateIPAllocationMethod: 'Dynamic'
       subnet: {
-        id: '${vnet.id}/subnets/${subnetName1}'
+        id: '${vnet.id}/subnets/${subnetName}'
       }
       publicIPAddress: {
       id: resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', vmPip.name)
