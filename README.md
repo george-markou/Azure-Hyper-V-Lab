@@ -1,77 +1,90 @@
-# Azure Hyper-V Lab
+# 🚀 Azure Hyper-V Lab
 
-Hey everyone 👋
+Welcome to the **Azure Hyper-V Lab**! This project provides an Azure IaaS VM Deployment Template for **Windows Server 2025 Datacenter Edition** with the **Hyper-V Role** enabled. Whether you're experimenting, learning, developing proofs of concept, or setting up a staging environment, this template simplifies the process and empowers you to leverage Hyper-V in Azure.
 
-Introducing an Azure IaaS VM Deployment Template for Windows Server 2025 Datacenter Edition with Hyper-V Role enabled. This template simplifies the process, allowing you to harness the power of Hyper-V for experimentation, learning, proof of concept development, non-production environments, or even as a staging environment for creating custom images destined for Azure's public cloud.
+---
 
-Here's what's included in the template:
+## 🌟 What's Included?
 
-+ A Virtual Network (VNet) with one Subnet
-+ A Static Public IP with Standard SKU
-+ A Network Security Group (NSG) configured to enable Remote Desktop Connections
-+ A Virtual Machine with Nested Virtualization capabilities - visit Markou.me for more information
-+ Two Premium SSD Disks: one for the Operating System (127GB) and one for Storing Virtual Machines (512GB)
+### Infrastructure:
+- **Virtual Network (VNet)** with a single Subnet
+- **Static Public IP** (Standard SKU)
+- **Network Security Group (NSG)** configured for Remote Desktop access
+- **Virtual Machine** with Nested Virtualization capabilities ([Learn more](https://www.markou.me))
+- **Premium SSD Disks**:
+  - 127GB for the Operating System
+  - 512GB for storing Virtual Machines
 
-🌐 Server Roles:
+### Server Roles:
+- **Hyper-V**
+- **DHCP Server**
+- **RSAT Tools**
+- **Containers**
 
-+ Hyper-V
-+ DHCP Server
-+ RSAT Tools
-+ Containers
+### Pre-Installed Software:
+- **Azure Az PowerShell Module**
+- **Azure CLI**
+- **Azure Storage Explorer**
+- **AzCopy Utility**
+- **PowerShell Core**
+- **Windows Admin Center**
+- **7-Zip**
+- **Chocolatey Package Manager**
 
-📦 Additional Software Pre-Installed:
+---
 
-+ Azure Az PowerShell module
-+ Azure CLI
-+ Azure Storage Explorer
-+ AzCopy Utility
-+ PowerShell Core
-+ Windows Admin Center
-+ 7-Zip
-+ Chocolatey Package Manager
+## 🚀 Get Started
 
-[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorge-markou%2FAzure-Hyper-V-Lab%2Fmain%2Fmain.json)
-
-## Get Started
-
-1. Press the button below to deploy the Template using the Azure Portal.
+### 1. Deploy the Template
+Click the button below to deploy the template directly in the Azure Portal:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fgeorge-markou%2FAzure-Hyper-V-Lab%2Fmain%2Fmain.json)
 
-2. Fill in the required information.
+### 2. Fill in the Required Information
+Provide the necessary details in the Azure Portal.
 
-![](./images/template.png)
+![Template Configuration](./images/template.png)
 
-3. Enjoy a cup of coffee :coffee: while waiting for the deployment to finish(Approx 15m).
+### 3. Sit Back and Relax ☕
+The deployment takes approximately 15 minutes.
 
-![](./images/deployment.png)
+![Deployment Progress](./images/deployment.png)
 
-4. Connect to the newly deployed VM using Remote Desktop.
+### 4. Connect to Your VM
+Use **Remote Desktop** to connect to the newly deployed VM.
 
-![](./images/connection.png)
+![Remote Desktop Connection](./images/connection.png)
 
-5. Start managing Hyper-V using either Hyper-V Manager or Windows Admin Center.
+### 5. Manage Hyper-V
+Start managing Hyper-V using **Hyper-V Manager** or **Windows Admin Center**.
 
-![](./images/shortcuts.png)
+![Hyper-V Shortcuts](./images/shortcuts.png)
 
-## General Notes
+---
 
-+ There is a large list of VM sizes specified as allowed values within the Template. Just to make your life easier and avoid deployment errors :superhero:.
-+ The virtual machine is utilizing Azure Spot Instances instead of regular instances, and an eviction policy has been set to 'deallocate'.
-+ To evaluate Microsoft Software and Operating Systems, use the Desktop Shortcut of the Microsoft Evaluation Center.
-+ In order to use Azure Marketplace Images to deploy Virtual Machines, visit my [blog](https://www.markou.me/2022/03/use-azure-marketplace-images-to-deploy-virtual-machines-on-azure-stack-hci/).
-+ The default path for storing Virtual Machine configuration files is "F:\VMS" and for disks is "F:\VMS\Disks".
-+ Enhanced Session Mode is set to Enabled.
-+ A DHCP Scope is present, providing Network Addressing to Virtual Machines.
-+ An Internal Hyper-V Switch that is Nat enabled is present.
-+ The Data Disk (Volume F) is formatted with ReFS and unit size 64KB.
-+ You will find both JSON and Bicep Templates within this repo.
-+ The DSC Configuration File is listed here [here](dsc/DSCInstallWindowsFeatures.ps1).
-+ The Host Configuration File is listed here [here](/HostConfig.ps1).
+## 📝 General Notes
 
-## Learn more about Hyper-V
+- A wide range of VM sizes is pre-configured in the template to avoid deployment errors. 💪
+- The VM uses **Azure Spot Instances** with an eviction policy set to `deallocate`.
+- Use the **Microsoft Evaluation Center** desktop shortcut to evaluate Microsoft software and operating systems.
+- Learn how to deploy VMs using Azure Marketplace Images on my [blog](https://www.markou.me/2022/03/use-azure-marketplace-images-to-deploy-virtual-machines-on-azure-stack-hci/).
+- Default paths:
+  - VM configuration files: `F:\VMS`
+  - VM disks: `F:\VMS\Disks`
+- **Enhanced Session Mode** is enabled.
+- A **DHCP Scope** is configured to provide network addressing for VMs.
+- An **Internal Hyper-V Switch** with NAT enabled is included.
+- The data disk (`Volume F`) is formatted with **ReFS** and a unit size of 64KB.
+- Both **JSON** and **Bicep Templates** are available in this repository.
+- Configuration files:
+  - [DSC Configuration File](dsc/DSCInstallWindowsFeatures.ps1)
+  - [Host Configuration File](/HostConfig.ps1)
 
-+ Windows Server Hyper-V and Virtualization Learning Path on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/windows-server-hyper-v-virtualization/)
-+ Markou.me Hyper-V [Blog](https://www.markou.me/category/hyper-v/)
-+ Virtualization [Blog](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization)
-+ MSLab [GitHub Project](https://github.com/microsoft/MSLab)
+---
+
+## 📚 Learn More About Hyper-V
+
+- [Windows Server Hyper-V and Virtualization Learning Path](https://docs.microsoft.com/en-us/learn/paths/windows-server-hyper-v-virtualization/) on Microsoft Learn
+- [Markou.me Hyper-V Blog](https://www.markou.me/category/hyper-v/)
+- [Virtualization Blog](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization)
+- [MSLab GitHub Project](https://github.com/microsoft/MSLab)
