@@ -51,7 +51,7 @@ $isoUrl = "https://go.microsoft.com/fwlink/?linkid=2293312&clcid=0x409&culture=e
 $isoDestination = "F:\VMS\ISO\WindowsServer2025Eval.iso"
 
 # Download the ISO file and save it to the specified location
-Invoke-WebRequest -Uri $isoUrl -OutFile $isoDestination -UseBasicParsing
+Start-BitsTransfer -Source $isoUrl -Destination $isoDestination
 
 ### Retrieve and Install Required Software ###
 # Install various tools and utilities using Chocolatey
