@@ -67,11 +67,6 @@ choco install 7zip -y                          # 7-Zip File Archiver
 # Create a COM object to manage desktop shortcuts
 $Shell = New-Object -ComObject ("WScript.Shell")
 
-# Create a shortcut for Windows Admin Center
-$Shortcut1 = $Shell.CreateShortcut("C:\Users\Public\Desktop\Windows Admin Center.url")
-$Shortcut1.TargetPath = "https://localhost:6516"  # URL for Windows Admin Center
-$Shortcut1.Save()
-
 # Create a shortcut for the Microsoft Evaluation Center
 $Shortcut2 = $Shell.CreateShortcut("C:\Users\Public\Desktop\Microsoft Evaluation Center.url")
 $Shortcut2.TargetPath = "https://www.microsoft.com/en-us/evalcenter/"  # URL for Evaluation Center
